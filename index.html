@@ -96,7 +96,7 @@ body{
 .play-btn svg{ width:14px; height:14px; fill: var(--ink-primary); margin-left:2px; }
 .viral-badge{ position:absolute; top:8px; left:8px; font-family:'IBM Plex Mono', monospace; font-size:9px; letter-spacing:0.05em; background: rgba(232,93,76,0.85); padding: 3px 7px; border-radius: 5px; z-index:2; }
 
-.bottom-nav{ position:absolute; bottom:0; left:0; right:0; height: 62px; background: rgba(26,29,39,0.92); backdrop-filter: blur(6px); border-top: 1px solid var(--hairline); display:flex; align-items:center; justify-content:center; gap:70px; }
+.bottom-nav{ position:absolute; bottom:0; left:0; right:0; height: 62px; background: rgba(26,29,39,0.92); backdrop-filter: blur(6px); border-top: 1px solid var(--hairline); display:flex; align-items:center; justify-content:center; gap:56px; }
 .nav-item{ display:flex; flex-direction:column; align-items:center; gap:3px; cursor:pointer; color: var(--ink-muted); }
 .nav-item svg{ width:19px; height:19px; stroke: var(--ink-muted); }
 .nav-item span{ font-family:'IBM Plex Mono', monospace; font-size:9px; }
@@ -174,7 +174,67 @@ body{
 
 .page-footer{ margin-top: 26px; max-width: 380px; text-align:center; font-size: 12.5px; color: var(--ink-muted); line-height:1.6; }
 
+/* ---------- THEME + MOTION ---------- */
+.screen.light-theme{
+  --surface-inset: #F5F3EE;
+  --surface-raised: #FFFFFF;
+  --ink-primary: #1C1E27;
+  --ink-muted: #6B7280;
+  --hairline: rgba(0,0,0,0.09);
+}
+body.reduce-motion .pulse-ring{ animation: none; opacity:0.4; }
+body.reduce-motion *{ transition-duration: 0.01ms !important; }
 @media (prefers-reduced-motion: reduce){ .pulse-ring{ animation: none; opacity:0.4; } *{ transition-duration: 0.01ms !important; } }
+
+/* ---------- HOME EXTRAS ---------- */
+.home-scroll{ flex:1; overflow-y:auto; padding: 14px 14px 90px; display:flex; flex-direction:column; gap:16px; }
+.section-label{ font-family:'IBM Plex Mono', monospace; font-size: 10px; letter-spacing:0.1em; color: var(--ink-muted); }
+.daily-card{ display:flex; align-items:center; gap:12px; background: linear-gradient(135deg, rgba(47,211,192,0.12), rgba(245,166,35,0.08)); border: 1px solid rgba(47,211,192,0.3); border-radius: 16px; padding: 14px; cursor:pointer; }
+.daily-card-icon{ font-size:22px; width:42px; height:42px; border-radius:12px; background: var(--surface-raised); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.daily-card-title{ font-family:'Fraunces', serif; font-weight:600; font-size: 14.5px; }
+.daily-card-sub{ font-family:'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--ink-muted); margin-top:2px; }
+
+/* ---------- TIPS ---------- */
+.stat-card{ background: var(--surface-raised); border:1px solid var(--hairline); border-radius:14px; padding:14px; text-align:center; }
+.stat-big{ font-family:'Fraunces', serif; font-weight:600; font-size: 26px; color: var(--signal-teal); }
+.stat-label{ font-family:'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--ink-muted); margin-top:4px; line-height:1.4; }
+.tip-card{ background: var(--surface-raised); border:1px solid var(--hairline); border-radius:14px; padding:12px 14px; cursor:pointer; }
+.tip-head{ display:flex; align-items:center; gap:10px; }
+.tip-icon{ font-size:16px; }
+.tip-title{ font-size:13px; font-weight:600; flex:1; }
+.tip-chevron{ color: var(--ink-muted); transition: transform .3s ease; }
+.tip-card.open .tip-chevron{ transform: rotate(180deg); }
+.tip-body{ max-height:0; overflow:hidden; transition: max-height .35s ease; }
+.tip-body p{ font-size:12px; color: var(--ink-muted); line-height:1.5; padding-top:8px; }
+.tip-card.open .tip-body{ max-height:150px; }
+
+/* ---------- DAILY CHALLENGE ---------- */
+#screen-daily .daily-body{ flex:1; overflow-y:auto; padding: 30px 26px 40px; display:flex; flex-direction:column; align-items:center; text-align:center; }
+.daily-options{ display:flex; gap:10px; margin-top: 24px; }
+.daily-options .action-card{ text-align:center; width: 105px; }
+
+/* ---------- PROFILE EXTRAS ---------- */
+.level-ring{ width:88px; height:88px; border-radius:50%; background: conic-gradient(var(--signal-teal) calc(var(--pct)*1%), var(--surface-raised) 0); display:flex; align-items:center; justify-content:center; margin:0 auto; }
+.level-ring-inner{ width:68px; height:68px; border-radius:50%; background: var(--surface-inset); display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono', monospace; font-size:13px; color: var(--ink-primary); }
+.level-name{ font-family:'Fraunces', serif; font-weight:600; font-size: 16px; margin-top:10px; }
+.badge-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap:10px; width:100%; margin: 22px 0 20px; }
+.badge-item{ display:flex; flex-direction:column; align-items:center; gap:6px; }
+.badge-circle{ width:44px; height:44px; border-radius:50%; border:1.5px solid; display:flex; align-items:center; justify-content:center; font-family:'Fraunces', serif; font-weight:600; font-size:16px; transition: opacity .3s ease; }
+.badge-item span{ font-family:'IBM Plex Mono', monospace; font-size:8.5px; color: var(--ink-muted); text-align:center; line-height:1.3; }
+.gear-icon{ cursor:pointer; }
+
+/* ---------- SETTINGS ---------- */
+.settings-body{ flex:1; overflow-y:auto; padding: 10px 20px 40px; }
+.settings-row{ display:flex; align-items:center; justify-content:space-between; padding: 16px 4px; border-bottom: 1px solid var(--hairline); gap:14px; }
+.settings-label{ font-size:13px; }
+.settings-sub{ font-family:'IBM Plex Mono', monospace; font-size:10px; color: var(--ink-muted); margin-top:3px; line-height:1.4; }
+.switch{ position:relative; display:inline-block; width:42px; height:24px; flex-shrink:0; }
+.switch input{ opacity:0; width:0; height:0; }
+.switch-slider{ position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background: var(--surface-raised); border:1px solid var(--hairline); border-radius:24px; transition:.3s; }
+.switch-slider:before{ position:absolute; content:""; height:18px; width:18px; left:2px; top:2px; background: var(--ink-muted); border-radius:50%; transition:.3s; }
+.switch input:checked + .switch-slider{ background: rgba(47,211,192,0.25); border-color: var(--signal-teal); }
+.switch input:checked + .switch-slider:before{ transform: translateX(18px); background: var(--signal-teal); }
+.reset-btn{ margin-top:26px; width:100%; font-family:'IBM Plex Mono', monospace; font-size:12px; color: var(--signal-coral); background: rgba(232,93,76,0.1); border:1px solid rgba(232,93,76,0.35); padding:12px; border-radius:14px; cursor:pointer; }
 </style>
 </head>
 <body>
@@ -200,7 +260,64 @@ body{
     <!-- HOME -->
     <div id="screen-home" class="app-screen">
       <div class="app-header">Missions</div>
-      <div class="chapter-list" id="chapterList"></div>
+      <div class="home-scroll">
+        <div class="daily-card" onclick="openDaily()">
+          <div class="daily-card-icon">🎲</div>
+          <div>
+            <div class="daily-card-title">Défi du jour</div>
+            <div class="daily-card-sub">Un scénario surprise, vrai ou manipulé ?</div>
+          </div>
+          <div class="chapter-status">›</div>
+        </div>
+        <div>
+          <div class="section-label">LES 4 MISSIONS</div>
+          <div class="chapter-list" id="chapterList" style="padding:10px 0 0;"></div>
+        </div>
+      </div>
+      <div class="bottom-nav" id="bottomNavHome" style="display:none;"></div>
+    </div>
+
+    <!-- TIPS -->
+    <div id="screen-tips" class="app-screen">
+      <div class="app-header">Astuces</div>
+      <div class="home-scroll" id="tipsList"></div>
+      <div class="bottom-nav" id="bottomNavTips" style="display:none;"></div>
+    </div>
+
+    <!-- DAILY CHALLENGE -->
+    <div id="screen-daily" class="app-screen">
+      <div class="app-header"><span class="back-arrow" onclick="goHome()">‹</span> Défi du jour</div>
+      <div class="daily-body">
+        <span class="step-eyebrow">VRAI OU MANIPULÉ ?</span>
+        <div class="friction-title" id="dailyQuestion" style="margin-top:6px;"></div>
+        <div class="daily-options" id="dailyOptions">
+          <button class="action-card" onclick="answerDaily(false)">✅ Authentique</button>
+          <button class="action-card" onclick="answerDaily(true)">🎭 Manipulé</button>
+        </div>
+        <div id="dailyResult" style="display:none; flex-direction:column; align-items:center; margin-top:6px;"></div>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="screen-settings" class="app-screen">
+      <div class="app-header"><span class="back-arrow" onclick="goProfile()">‹</span> Réglages</div>
+      <div class="settings-body">
+        <div class="settings-row">
+          <div>
+            <div class="settings-label">Mode clair</div>
+            <div class="settings-sub">Change l'apparence de l'application</div>
+          </div>
+          <label class="switch"><input type="checkbox" id="themeToggle" onchange="toggleTheme()"><span class="switch-slider"></span></label>
+        </div>
+        <div class="settings-row">
+          <div>
+            <div class="settings-label">Réduire les animations</div>
+            <div class="settings-sub">Désactive les effets de pulsation et transitions</div>
+          </div>
+          <label class="switch"><input type="checkbox" id="motionToggle" onchange="toggleMotion()"><span class="switch-slider"></span></label>
+        </div>
+        <button class="reset-btn" onclick="resetProgress()">Réinitialiser ma progression</button>
+      </div>
     </div>
 
     <!-- FEED -->
@@ -281,21 +398,24 @@ body{
 
     <!-- PROFILE -->
     <div id="screen-profile" class="app-screen">
-      <div class="app-header">Profil</div>
+      <div class="app-header">Profil
+        <svg class="gear-icon" onclick="goSettings()" viewBox="0 0 24 24" fill="none" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+        </svg>
+      </div>
       <div class="profile-body">
-        <div class="profile-score-wrap">
-          <div class="profile-score" id="profileScore">0 / 4</div>
-          <div class="profile-score-label">MISSIONS TERMINÉES</div>
+        <div class="level-ring" id="levelRing" style="--pct:0;">
+          <div class="level-ring-inner" id="levelRingInner">0/4</div>
         </div>
-        <div class="profile-list" id="profileList"></div>
+        <div class="level-name" id="levelName">Débutant</div>
+        <div class="badge-grid" id="badgeGrid"></div>
         <div class="profile-skills-label">COMPÉTENCES EMI DÉBLOQUÉES</div>
         <div class="chip-row" id="profileSkills" style="margin-top:10px; justify-content:flex-start;"></div>
       </div>
       <div class="bottom-nav" id="bottomNavProfile" style="display:none;"></div>
     </div>
 
-    <!-- shared bottom nav lives on home screen; feed/profile get a rendered copy via JS -->
-    <div class="bottom-nav" id="bottomNavHome" style="display:none;"></div>
   </div>
 </div>
 
@@ -309,6 +429,10 @@ const navHTML = function(active){
     <div class="nav-item ${active==='home'?'active':''}" onclick="goHome()">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
       <span>Accueil</span>
+    </div>
+    <div class="nav-item ${active==='tips'?'active':''}" onclick="goTips()">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a6 6 0 00-3.5 10.9c.5.4.8 1 .8 1.6v.5h5.4v-.5c0-.6.3-1.2.8-1.6A6 6 0 0012 2z"/></svg>
+      <span>Astuces</span>
     </div>
     <div class="nav-item ${active==='profile'?'active':''}" onclick="goProfile()">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
@@ -372,22 +496,32 @@ function goStep(id){
   document.getElementById(id).classList.add('active');
 }
 
+function showBottomNav(containerId, active){
+  ['bottomNavHome','bottomNavFeed','bottomNavProfile','bottomNavTips'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.style.display = 'none';
+  });
+  const target = document.getElementById(containerId);
+  target.style.display = 'flex';
+  target.innerHTML = navHTML(active);
+}
+
 function goHome(){
   renderHome();
   showScreen('screen-home');
-  document.getElementById('bottomNavHome').style.display='flex';
-  document.getElementById('bottomNavHome').innerHTML = navHTML('home');
-  document.getElementById('bottomNavFeed').style.display='none';
-  document.getElementById('bottomNavProfile').style.display='none';
+  showBottomNav('bottomNavHome','home');
 }
 
 function goProfile(){
   renderProfile();
   showScreen('screen-profile');
-  document.getElementById('bottomNavProfile').style.display='flex';
-  document.getElementById('bottomNavProfile').innerHTML = navHTML('profile');
-  document.getElementById('bottomNavHome').style.display='none';
-  document.getElementById('bottomNavFeed').style.display='none';
+  showBottomNav('bottomNavProfile','profile');
+}
+
+function goTips(){
+  renderTips();
+  showScreen('screen-tips');
+  showBottomNav('bottomNavTips','tips');
 }
 
 function renderHome(){
@@ -433,10 +567,7 @@ function openChapter(i){
     </div>
   `;
   showScreen('screen-feed');
-  document.getElementById('bottomNavFeed').style.display='flex';
-  document.getElementById('bottomNavFeed').innerHTML = navHTML('');
-  document.getElementById('bottomNavHome').style.display='none';
-  document.getElementById('bottomNavProfile').style.display='none';
+  showBottomNav('bottomNavFeed','');
 }
 
 function startFriction(i){
@@ -552,22 +683,127 @@ function completeChapter(){
   showScreen('screen-debrief');
 }
 
+function levelInfo(doneCount){
+  if(doneCount===0) return { name:'Débutant', pct:4 };
+  if(doneCount===1) return { name:'Vigilant', pct:25 };
+  if(doneCount===2) return { name:'Vigilant', pct:50 };
+  if(doneCount===3) return { name:'Avisé', pct:75 };
+  return { name:'Expert EMI', pct:100 };
+}
+
 function renderProfile(){
   const doneCount = completed.filter(Boolean).length;
-  document.getElementById('profileScore').textContent = doneCount + ' / ' + chapters.length;
-  document.getElementById('profileList').innerHTML = chapters.map((ch,i)=>`
-    <div class="profile-row">
-      <span class="profile-dot" style="background:${completed[i]?ch.color:'transparent'};border-color:${ch.color}"></span>
-      <span>${ch.title}</span>
-      <span class="profile-state">${completed[i] ? 'Terminé' : 'À faire'}</span>
-    </div>
-  `).join('');
+  const lvl = levelInfo(doneCount);
+  document.getElementById('levelRing').style.setProperty('--pct', lvl.pct);
+  document.getElementById('levelRingInner').textContent = doneCount + '/' + chapters.length;
+  document.getElementById('levelName').textContent = lvl.name;
+
+  document.getElementById('badgeGrid').innerHTML = chapters.map((ch,i)=>{
+    const initial = ch.title.replace('Le ','').replace("L'",'').charAt(0);
+    return `
+      <div class="badge-item">
+        <div class="badge-circle" style="border-color:${completed[i]?ch.color:'var(--hairline)'};background:${completed[i]?ch.color+'22':'transparent'};color:${completed[i]?ch.color:'var(--ink-muted)'};opacity:${completed[i]?1:0.4}">${initial}</div>
+        <span>${ch.title}</span>
+      </div>
+    `;
+  }).join('');
+
   const set = new Set();
   chapters.forEach((ch,i)=>{ if(completed[i]) ch.skills.forEach(s=>set.add(s.split(' — ')[0])); });
   const tags = Array.from(set);
   document.getElementById('profileSkills').innerHTML = tags.length
     ? tags.map(t=>`<div class="chip" style="cursor:default;">${t}</div>`).join('')
     : `<span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-muted);">Termine une mission pour débloquer des compétences</span>`;
+}
+
+/* ---------- TIPS LIBRARY ---------- */
+function renderTips(){
+  const stats = [
+    { big:'86%', label:"des jeunes de 9 à 17 ans utilisent ou interagissent avec l'IA au quotidien." },
+    { big:'35%', label:"seulement comprennent que l'IA ne sait pas distinguer le vrai du faux." }
+  ];
+  const tips = [
+    { icon:'🕐', title:'Marque une pause', body:"Avant de partager, laisse passer quelques secondes. C'est souvent le seul geste qui empêche une fausse information d'aller plus loin." },
+    { icon:'🔎', title:'Remonte à la source', body:"Une info sans origine claire est un signal d'alerte. Cherche qui l'a publiée en premier, et depuis quand." },
+    { icon:'🖼', title:"Recherche inversée d'image", body:"Google Images, TinEye ou Yandex permettent de savoir si une photo ou une vidéo a déjà circulé ailleurs, dans un autre contexte." },
+    { icon:'👁', title:'Repère les indices visuels', body:"Éclairage incohérent, bords flous, mouvements étranges : les deepfakes laissent souvent des traces si on prend le temps de regarder." },
+    { icon:'🎭', title:"Questionne l'intention", body:"Demande-toi pourquoi ce contenu a été conçu pour te faire ressentir exactement cette émotion." },
+    { icon:'🔐', title:'Limite les autorisations', body:"Une application n'a besoin d'accéder qu'à ce qui sert vraiment à son fonctionnement. Le reste est une demande de trop." }
+  ];
+  let html = '<div class="section-label">LE SAVAIS-TU ?</div>';
+  html += stats.map(s=>`<div class="stat-card"><div class="stat-big">${s.big}</div><div class="stat-label">${s.label}</div></div>`).join('');
+  html += '<div class="section-label" style="margin-top:4px;">RÉFLEXES À ADOPTER</div>';
+  html += tips.map(t=>`
+    <div class="tip-card" onclick="this.classList.toggle('open')">
+      <div class="tip-head"><span class="tip-icon">${t.icon}</span><span class="tip-title">${t.title}</span><span class="tip-chevron">⌄</span></div>
+      <div class="tip-body"><p>${t.body}</p></div>
+    </div>
+  `).join('');
+  document.getElementById('tipsList').innerHTML = html;
+}
+
+/* ---------- DAILY CHALLENGE ---------- */
+const dailyPool = [
+  { text:"Une vidéo montre un présentateur connu annoncer une fausse alerte sanitaire, partagée 50 000 fois en une heure.", manipulated:true, explanation:"Une viralité extrême en très peu de temps, sans aucune source officielle, est un signal classique de contenu fabriqué pour l'urgence émotionnelle." },
+  { text:"Un article cite AFP Fact Check pour démentir une rumeur sur le climat, avec un lien vérifiable vers l'organisation.", manipulated:false, explanation:"Une source reconnue, citée avec un lien vérifiable, est un bon signe de fiabilité — même si ça vaut toujours la peine de vérifier soi-même." },
+  { text:"Une page inconnue promet de l'argent gratuit si tu partages le message à 10 amis avant minuit.", manipulated:true, explanation:"La pression du temps et la récompense immédiate sont des techniques classiques pour forcer un partage impulsif." },
+  { text:"Un communiqué officiel est publié avec une date, une signature et un lien vers le site institutionnel du gouvernement.", manipulated:false, explanation:"Une source clairement identifiée et datée, provenant d'une institution officielle, est un bon indicateur de fiabilité." },
+  { text:"Un chatbot te dit qu'il est « vraiment triste » de ne pas te parler plus souvent et te demande de revenir demain.", manipulated:true, explanation:"Les IA n'ont pas d'émotions réelles — ce langage est conçu pour créer un attachement et te faire revenir plus souvent." }
+];
+let currentDaily = null;
+let lastDailyIndex = -1;
+
+function pickDaily(){
+  let idx;
+  do{ idx = Math.floor(Math.random()*dailyPool.length); } while(idx===lastDailyIndex && dailyPool.length>1);
+  lastDailyIndex = idx;
+  return dailyPool[idx];
+}
+
+function openDaily(){
+  currentDaily = pickDaily();
+  document.getElementById('dailyQuestion').textContent = currentDaily.text;
+  document.getElementById('dailyOptions').style.display = 'flex';
+  document.getElementById('dailyResult').style.display = 'none';
+  showScreen('screen-daily');
+}
+
+function answerDaily(guess){
+  const correct = guess === currentDaily.manipulated;
+  document.getElementById('dailyOptions').style.display = 'none';
+  const resEl = document.getElementById('dailyResult');
+  resEl.style.display = 'flex';
+  resEl.innerHTML = `
+    <div class="reveal-icon" style="border-color:${correct?'var(--signal-teal)':'var(--signal-coral)'};background:${correct?'rgba(47,211,192,0.12)':'rgba(232,93,76,0.12)'}">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" style="stroke:${correct?'var(--signal-teal)':'var(--signal-coral)'}">${correct ? '<path d="M20 6L9 17l-5-5"/>' : '<path d="M6 6l12 12M18 6L6 18"/>'}</svg>
+    </div>
+    <div class="friction-title">${correct ? 'Bien vu !' : 'Pas tout à fait.'}</div>
+    <div class="friction-text">${currentDaily.explanation}</div>
+    <button class="scan-btn" onclick="openDaily()" style="margin-top:16px;">Nouveau défi</button>
+  `;
+}
+
+/* ---------- SETTINGS ---------- */
+function goSettings(){
+  showScreen('screen-settings');
+  document.getElementById('themeToggle').checked = document.querySelector('.screen').classList.contains('light-theme');
+  document.getElementById('motionToggle').checked = document.body.classList.contains('reduce-motion');
+}
+
+function toggleTheme(){
+  document.querySelector('.screen').classList.toggle('light-theme');
+}
+
+function toggleMotion(){
+  document.body.classList.toggle('reduce-motion');
+}
+
+function resetProgress(){
+  if(confirm('Réinitialiser toute ta progression ?')){
+    completed = [false,false,false,false];
+    renderProfile();
+    renderHome();
+  }
 }
 </script>
 </body>
